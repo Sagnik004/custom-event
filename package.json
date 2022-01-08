@@ -7,7 +7,7 @@
     "dev": "lite-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sagnik Chakraborty",
   "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.6.1"

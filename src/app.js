@@ -1,5 +1,7 @@
 // DOM Elements
 const todosContainer = document.getElementById("todos-container");
+const todosTemplate = document.getElementById("todos-template");
+const todoTemplate = todosTemplate.querySelector(".todo");
 
 // Functions
 const fetchAndDispatch = async function (url, domElementToNotify, eventTitle) {
@@ -47,4 +49,10 @@ window.addEventListener("DOMContentLoaded", () => {
     document,
     "todos-loaded"
   );
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  for (let i = 0; i < 15; i++) {
+    todosTemplate.append(todoTemplate.cloneNode(true));
+  }
 });
