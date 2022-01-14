@@ -2,6 +2,7 @@
 const todosContainer = document.getElementById("todos-container");
 const todosTemplate = document.getElementById("todos-template");
 const todoTemplate = todosTemplate.querySelector(".todo");
+const backToTopBtn = document.querySelector(".back-to-top");
 
 // Variables
 let idStart = 1,
@@ -43,6 +44,9 @@ const createTodo = function ({ id, title, completed }) {
 const createTodos = function () {
   allTodos.forEach((todo) => {
     if (todo.id >= idStart && todo.id <= idEnd) {
+      if (todo.title.length >= 30) {
+        todo.title = todo.title.slice(0, 35) + "...";
+      }
       todosContainer.append(createTodo(todo));
     }
   });
@@ -61,7 +65,23 @@ const loadNextTodoSet = function () {
   createTodos();
 };
 
+const showBackToTopBtn = function (showFlag) {
+  if (showFlag) {
+    backToTopBtn.classList.remove("btn-hidden");
+  } else {
+    backToTopBtn.classList.add("btn-hidden");
+  }
+};
+
+const goToTop = function () {
+  document.body.scrollIntoView({
+    behavior: "smooth",
+  });
+};
+
 // Event Listeners
+backToTopBtn.addEventListener("click", goToTop);
+
 document.addEventListener("todos-loaded", handleTodosLoaded);
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -84,5 +104,14 @@ window.addEventListener("scroll", function () {
 
   if ((scrollHeight - 300 >= scrollPos) / scrollHeight === 0) {
     loadNextTodoSet();
+  }
+});
+
+window.addEventListener("scroll", () => {
+  let el = document.documentElement || document.body;
+  if (el.scrollTop > 200) {
+    showBackToTopBtn(true);
+  } else {
+    showBackToTopBtn(false);
   }
 });
