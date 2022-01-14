@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Faustina:wght@400;500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +8,9 @@
 
 body {
   padding: 1rem;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: "Faustina", serif;
+  font-size: 18px;
+  background: #eeeef0;
 }
 
 .skeleton {
@@ -38,6 +41,8 @@ body {
 
 .main-heading {
   margin: 1rem auto;
+  margin-bottom: 2.5rem;
+  font-size: 3rem;
   text-align: center;
   color: dodgerblue;
 }
@@ -53,6 +58,7 @@ body {
   padding: 1rem;
   height: 8rem;
   color: rgb(31, 31, 31);
+  background: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   transition: box-shadow 0.3s linear, border 0.1s linear;
@@ -62,12 +68,38 @@ body {
 }
 
 .todo:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  border: 2.8px solid dodgerblue;
+  border-bottom: 4px solid dodgerblue;
 }
 
 .todo-title {
   text-transform: uppercase;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  border-radius: 100%;
+  background: dodgerblue;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  opacity: 100%;
+  transition: opacity 0.5s;
+}
+
+.btn-hidden {
+  opacity: 0%;
+}
+
+.back-to-top-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #fff;
+}
+
+.back-to-top:hover {
+  opacity: 60%;
 }
 
 @media screen and (min-width: 600px) {
